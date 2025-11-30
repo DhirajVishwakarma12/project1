@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legarium - Signed In</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* --- APP WEB DIMENSIONS & STYLING --- */
+        
+        /* 1. Desktop Background (Outside the phone) */
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f0f2f5; /* Light gray background */
+            height: 100vh;
+            width: 100vw;
+            display: flex;
+            justify-content: center; /* Center the phone horizontally */
+            align-items: center;     /* Center the phone vertically */
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            overflow: hidden; /* Prevent scrolling on the main page */
+        }
+
+        /* 2. The "Phone Screen" Container */
+        .mobile-container {
+            width: 100%;
+            max-width: 480px; /* Constraints width to look like a mobile app */
+            height: 100vh;    /* Takes full height of the viewport */
+            background-color: #ffffff;
+            display: flex;
+            flex-direction: column;
+            justify-content: center; /* Vertically center the content */
+            align-items: center;     /* Horizontally center the content */
+            position: relative;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1); /* nice shadow for desktop view */
+            overflow: hidden; /* Internal scroll prevention */
+        }
+
+        /* 3. Icon Styling */
+        .success-icon-circle {
+            width: 100px;
+            height: 100px;
+            background: #D1FAE5;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 0 auto 20px;
+            animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        }
+
+        /* 4. Text Typography */
+        h1 {
+            font-size: 24px;
+            font-weight: 700;
+            color: #1f2937;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+
+        .subtitle {
+            color: #6b7280;
+            font-size: 16px;
+            margin-bottom: 24px;
+            text-align: center;
+        }
+
+        #timerMsg {
+            color: #EF4444; 
+            font-size: 14px;
+            font-weight: 500;
+            text-align: center;
+        }
+
+        /* Pop Animation */
+        @keyframes popIn {
+            0% { transform: scale(0); opacity: 0; }
+            100% { transform: scale(1); opacity: 1; }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="mobile-container">
+        <div class="w-100 px-4"> 
+            <div class="success-icon-circle">
+                <i class="fas fa-check" style="color: #10B981; font-size: 40px;"></i>
+            </div>
+            
+            <h1>Successfully Signed In!</h1>
+            <p class="subtitle">Welcome back to Legarium.</p>
+            
+            <div id="timerMsg">
+                Auto-redirecting in 3...
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function getmigrate(newvalue) {
+            let timeLeft = 3;
+            const timerMsg = document.getElementById('timerMsg');
+
+            const interval = setInterval(() => {
+                timeLeft--;
+                timerMsg.innerText = `Auto-redirecting in ${timeLeft}...`;
+
+                if (timeLeft <= 0) {
+                    clearInterval(interval);
+                    
+                    // Logic to handle redirects based on user role (1=Student, 2=Citizen, 3=Lawyer)
+                    if (newvalue == "1") {
+                        window.location.href = "page5.html"; // Student Dashboard
+                    } else if (newvalue == "2") {
+                        window.location.href = "page7.html"; // Citizen Dashboard
+                    } else {
+                        // Assuming "3" or default
+                        window.location.href = "page8.html"; // Lawyer Dashboard
+                    }
+                }
+            }, 1000);
+        }
+
+        // This code runs immediately when the page loads
+        document.addEventListener("DOMContentLoaded", () => {
+            // 1. Retrieve the value from memory
+            // Note: LocalStorage always returns a STRING
+            let storedValue = localStorage.getItem("userChoice");
+
+            // 2. Check if it exists and use it
+            if (storedValue) {
+                console.log("I remembered the value from the previous page:", storedValue);
+                // Function to call the navigation    
+                getmigrate(storedValue);
+            } else {
+                // Fallback if no userChoice is found (optional safety)
+                console.log("No user choice found in storage.");
+                timerMsg.innerText = "Error: User role not found. Redirecting to home...";
+                setTimeout(() => { window.location.href = "index.html"; }, 2000);
+            }
+        });
+    </script>
+</body>
+</html>

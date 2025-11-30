@@ -1,0 +1,68 @@
+<!-- Student deskboard -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legarium - Student Home</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-button.css">
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="d-flex justify-content-between align-items-center p-3 border-bottom bg-white">
+            <span class="fw-bold text-primary-custom h5 mb-0">LEGARIUM</span>
+            <i class="fas fa-bell text-muted"></i>
+        </div>
+
+        <div class="p-3">
+            <!-- Welcome Banner -->
+            <div class="p-4 mb-3 rounded-4" style="background-color: #EEF2FF;">
+                <h4 class="fw-bold text-dark">Welcome to your Student Practice Lab!</h4>
+                <p class="small text-muted mb-3">Explore modules designed to enhance your legal skills.</p>
+                <a href="page6.html" class="btn btn-sm btn-primary-custom px-4">Start Practicing</a>
+            </div>
+
+            <!-- Dashboard Widgets (Simplified for Bootstrap Grid) -->
+            <div class="row g-3">
+                <div class="col-6">
+                    <div class="card-custom p-3 text-center h-100">
+                        <i class="fas fa-clock text-primary-custom mb-2 fa-lg"></i>
+                        <h6 class="small fw-bold">Recent</h6>
+                        <span class="badge bg-light text-dark">Family Law</span>
+                    </div>
+                </div>
+                <div class="col-6">
+                    <div class="card-custom p-3 text-center h-100">
+                        <i class="fas fa-trophy text-warning mb-2 fa-lg"></i>
+                        <h6 class="small fw-bold">Progress</h6>
+                        <span class="badge bg-light text-dark">Level 5</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom Nav -->
+        <div class="bottom-nav">
+            <a href="page5.html" class="nav-link-custom active">
+                <i class="fas fa-home"></i> Home
+            </a>
+            <a href="page19.html" class="nav-link-custom">
+                <i class="fas fa-comment-dots"></i> Messages
+            </a>
+            <a href="page6.html" class="nav-link-custom">
+                <i class="fas fa-book-open"></i> Learn
+            </a>
+            <a href="page12.html" class="nav-link-custom">
+                <i class="fas fa-user"></i> Profile
+            </a>
+        </div>
+    </div>
+    <script src="main.js"></script>
+    <script src="ai-button.js"></script>
+</body>
+</html>

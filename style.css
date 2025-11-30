@@ -1,0 +1,185 @@
+:root {
+    --primary: #5465FF; /* Bright Blue from image */
+    --text-dark: #1F2937;
+    --text-grey: #6B7280;
+    --bg-color: #ffffff;
+    --input-bg: #F9FAFB;
+    --border-color: #E5E7EB;
+}
+
+body {
+    font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    background-color: #f3f4f6;
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+
+
+/* Mobile Container Simulation */
+
+.mobile-container {
+    width: 455.6;
+   min-height: 100vh; 
+    background-color: var(--bg-color);
+    border-radius: 30px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.1);
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    box-sizing: border-box;
+    
+}
+
+/* Header & Logo */
+.status-bar {
+    display: flex;
+    justify-content: space-between;
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 40px;
+}
+
+.logo-box {
+    width: 60px;
+    height: 60px;
+    background-color: #0056D2; /* Darker blue icon bg */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+.logo-box i {
+    color: white;
+    font-size: 32px;
+}
+
+/* Typography */
+h1 {
+    font-size: 32px;
+    font-weight: 800;
+    color: var(--text-dark);
+    margin: 0 0 10px 0;
+}
+
+.subtitle {
+    color: var(--text-grey);
+    font-size: 14px;
+    line-height: 1.5;
+    margin-bottom: 40px;
+}
+
+/* Inputs */
+.input-group {
+    position: relative;
+    margin-bottom: 25px;
+}
+
+.input-icon {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: #9CA3AF;
+}
+
+.form-input {
+    width: 100%;
+    padding: 16px 16px 16px 45px; /* Left padding for icon */
+    background-color: #fff;
+    border: 1px solid #E5E7EB; /* Subtle border like image */
+    border-bottom: 1px solid #E5E7EB;
+    border-radius: 8px; /* Slightly rounded */
+    font-size: 14px;
+    box-sizing: border-box;
+    outline: none;
+}
+.form-input:focus {
+    border-color: var(--primary);
+}
+/* Underline effect in image is subtle, used border-bottom above */
+
+/* Buttons */
+.btn-primary {
+    width: 100%;
+    background-color: var(--primary);
+    color: white;
+    border: none;
+    padding: 16px;
+    font-size: 16px;
+    font-weight: 600;
+    border-radius: 30px; /* Pill shape */
+    cursor: pointer;
+    margin-bottom: 20px;
+    transition: opacity 0.2s;
+}
+.btn-primary:active {
+    opacity: 0.9;
+}
+
+.or-divider {
+    text-align: center;
+    color: var(--text-grey);
+    font-size: 14px;
+    margin: 20px 0;
+}
+
+/* Social Login */
+.social-login-label {
+    font-size: 14px;
+    color: var(--text-grey);
+    margin-bottom: 15px;
+    display: block;
+}
+
+.social-buttons {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+}
+
+.social-btn {
+    flex: 1;
+    height: 50px;
+    border: 1px solid var(--border-color);
+    border-radius: 25px;
+    background: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+/* Footer */
+.footer-branding {
+    margin-top: auto;
+    text-align: center;
+    font-size: 12px;
+    color: #9CA3AF;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 5px;
+}
+
+/* OTP Specific */
+.otp-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+    margin: 30px 0;
+}
+.otp-digit {
+    width: 45px;
+    height: 50px;
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    text-align: center;
+    font-size: 20px;
+}

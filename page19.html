@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legarium - Messages</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="ai-button.css">
+
+    <style>
+        /* --- CONTENT FADE ANIMATION --- */
+        .tab-pane {
+            display: none; /* Hide by default to prevent stacking */
+        }
+        .tab-pane.active {
+            display: block; /* Bootstrap handles this, but ensuring clarity */
+        }
+        
+        .tab-pane.fade {
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            transform: translateY(15px) scale(0.98);
+            opacity: 0;
+        }
+        
+        .tab-pane.fade.show {
+            transform: translateY(0) scale(1);
+            opacity: 1;
+        }
+
+        /* --- HEADER SLIDING ANIMATION --- */
+        /* Override Bootstrap default nav styles */
+        .nav-tabs .nav-link {
+            border: none !important;
+            color: #6c757d; /* Muted text */
+            font-weight: 600;
+            background: transparent !important;
+            transition: color 0.3s ease;
+            position: relative;
+            z-index: 5;
+        }
+
+        .nav-tabs .nav-link:hover {
+            border: none;
+            color: var(--primary-color);
+        }
+
+        .nav-tabs .nav-link.active {
+            color: var(--primary-color) !important;
+        }
+
+        /* The sliding bar container */
+        .nav-tabs-container {
+            position: relative;
+        }
+
+        /* The actual sliding bar */
+        .tab-slider {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            height: 3px;
+            background-color: var(--primary-color);
+            transition: left 0.3s cubic-bezier(0.25, 0.8, 0.25, 1), width 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+            z-index: 10;
+            border-radius: 3px 3px 0 0;
+            pointer-events: none; /* Let clicks pass through to buttons */
+        }
+
+        /* --- RESPONSIVE MESSAGE LIST ITEMS --- */
+        .message-item {
+            display: block;
+            padding: 12px 8px; /* Larger touch target */
+            border-radius: 8px;
+            transition: background-color 0.2s ease;
+            border-bottom: 1px solid #f0f0f0;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+        .message-item:hover, .message-item:active {
+            background-color: #f8f9fa;
+            text-decoration: none;
+            color: inherit;
+        }
+
+        .message-item:last-child {
+            border-bottom: none;
+        }
+
+        /* Crucial for flex text truncation */
+        .min-width-0 {
+            min-width: 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="app-container">
+        <!-- Header -->
+        <div class="header-nav px-3 bg-white border-bottom">
+            <button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+            <h5 class="fw-bold mb-0 ms-3">Messages</h5>
+        </div>
+
+        <!-- Custom Tabs Header Wrapper -->
+        <div class="nav-tabs-container bg-white pt-2 border-bottom">
+            <ul class="nav nav-tabs nav-fill border-0" id="msgTabs" role="tablist">
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link active" id="students-tab" data-bs-toggle="tab" data-bs-target="#students" type="button" role="tab" aria-controls="students" aria-selected="true">Law Students</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="citizens-tab" data-bs-toggle="tab" data-bs-target="#citizens" type="button" role="tab" aria-controls="citizens" aria-selected="false">Citizens</button>
+                </li>
+                <li class="nav-item" role="presentation">
+                    <button class="nav-link" id="lawyers-tab" data-bs-toggle="tab" data-bs-target="#lawyers" type="button" role="tab" aria-controls="lawyers" aria-selected="false">Lawyers</button>
+                </li>
+            </ul>
+            <!-- This div is the animated sliding line -->
+            <div id="tab-slider" class="tab-slider"></div>
+        </div>
+
+        <!-- Tab Content -->
+        <div class="tab-content" id="msgTabsContent">
+            
+            <!-- Law Students Tab Content -->
+            <div class="tab-pane fade show active p-3" id="students" role="tabpanel" aria-labelledby="students-tab">
+                <a href="page10.html" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <h6 class="fw-bold mb-1 text-truncate">Upcoming Legal Ethics Seminar</h6>
+                            <p class="text-muted small mb-0 text-truncate">Don't miss our seminar on advanced legal ethics.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">2h ago</small>
+                    </div>
+                </a>
+
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-truncate">Academic Advisor</h6>
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 0.6rem;">New</span>
+                            </div>
+                            <p class="text-muted small mb-0 text-truncate">Feedback on Your Research Paper regarding the new constitutional amendments.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">Yesterday</small>
+                    </div>
+                </a>
+
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-truncate">Career Services</h6>
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 0.6rem;">New</span>
+                            </div>
+                            <p class="text-muted small mb-0 text-truncate">New Internship Opportunity Alert at Pearson & Specter.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">2 days ago</small>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Citizens Tab Content -->
+            <div class="tab-pane fade p-3" id="citizens" role="tabpanel" aria-labelledby="citizens-tab">
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-truncate">Legal Aid Support</h6>
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 0.6rem;">New</span>
+                            </div>
+                            <p class="text-muted small mb-0 text-truncate">Your request for consultation has been approved.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">10m ago</small>
+                    </div>
+                </a>
+
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <h6 class="fw-bold mb-1 text-truncate">Case #402 Update</h6>
+                            <p class="text-muted small mb-0 text-truncate">New documents have been uploaded to your case file for review.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">5h ago</small>
+                    </div>
+                </a>
+                
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <h6 class="fw-bold mb-1 text-truncate">Advocate Sarah Jenkins</h6>
+                            <p class="text-muted small mb-0 text-truncate">Please review the attached draft contract.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">1 day ago</small>
+                    </div>
+                </a>
+            </div>
+
+            <!-- Lawyers Tab Content -->
+            <div class="tab-pane fade p-3" id="lawyers" role="tabpanel" aria-labelledby="lawyers-tab">
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-truncate">High Court Registry</h6>
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 0.6rem;">Urgent</span>
+                            </div>
+                            <p class="text-muted small mb-0 text-truncate">Hearing for Case R v. Doe rescheduled to Room 4B.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">Just now</small>
+                    </div>
+                </a>
+
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <div class="d-flex align-items-center mb-1">
+                                <h6 class="fw-bold mb-0 text-truncate">Client: Michael Ross</h6>
+                                <span class="badge bg-danger rounded-pill ms-2" style="font-size: 0.6rem;">New</span>
+                            </div>
+                            <p class="text-muted small mb-0 text-truncate">Inquiry regarding property dispute settlement details.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">3h ago</small>
+                    </div>
+                </a>
+
+                <a href="#" class="message-item">
+                    <div class="d-flex justify-content-between align-items-start">
+                        <div class="flex-grow-1 min-width-0 pe-2">
+                            <h6 class="fw-bold mb-1 text-truncate">Bar Association</h6>
+                            <p class="text-muted small mb-0 text-truncate">Reminder: Annual membership renewal due next week.</p>
+                        </div>
+                        <small class="text-muted text-nowrap" style="font-size: 0.7rem;">2 days ago</small>
+                    </div>
+                </a>
+            </div>
+        </div>
+
+        <!-- Bottom Navigation -->
+        <div class="bottom-nav">
+            <a href="page5.html" class="nav-link-custom"><i class="fas fa-home"></i> Home</a>
+            <a href="page19.html" class="nav-link-custom active"><i class="fas fa-comment-dots"></i> Messages</a>
+            <a href="page12.html" class="nav-link-custom"><i class="fas fa-user"></i> Profile</a>
+        </div>
+    </div>
+    
+    <script src="main.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    
+    <!-- Script for Tab Slider Animation -->
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            const slider = document.getElementById('tab-slider');
+            const tabsContainer = document.querySelector('.nav-tabs');
+            
+            function updateSlider(tabElement) {
+                if (tabElement) {
+                    slider.style.width = tabElement.offsetWidth + 'px';
+                    slider.style.left = tabElement.offsetLeft + 'px';
+                }
+            }
+
+            // Initialize slider position on the active tab immediately
+            const activeTab = tabsContainer.querySelector('.nav-link.active');
+            if (activeTab) {
+                updateSlider(activeTab);
+            }
+
+            // Listen for Bootstrap tab show events to animate to the new tab
+            const tabButtons = document.querySelectorAll('button[data-bs-toggle="tab"]');
+            tabButtons.forEach(btn => {
+                btn.addEventListener('show.bs.tab', function(event) {
+                    updateSlider(event.target);
+                });
+            });
+
+            // Recalculate on window resize to keep alignment
+            window.addEventListener('resize', function() {
+                const currentActive = tabsContainer.querySelector('.nav-link.active');
+                if (currentActive) {
+                    updateSlider(currentActive);
+                }
+            });
+        });
+    </script>
+    <script src="ai-button.js"></script>
+</body>
+</html>

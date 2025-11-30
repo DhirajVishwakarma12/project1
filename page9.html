@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legarium - Moot Court</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app-container">
+        <div class="header-nav px-3 bg-white border-bottom">
+            <button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+            <h6 class="fw-bold mb-0 ms-3">Virtual Moot Court</h6>
+        </div>
+
+        <div class="p-3">
+            <div class="mb-3">
+                <h5 class="fw-bold mb-1">Case: R v. John Doe</h5>
+                <span class="badge bg-danger">Active</span>
+                <span class="text-muted small ms-2"><i class="fas fa-clock"></i> 1h 30m remaining</span>
+            </div>
+
+            <!-- Video Area -->
+            <div class="bg-dark rounded-3 position-relative mb-2 d-flex justify-content-center align-items-center" style="height: 220px;">
+                <i class="fas fa-user text-secondary fa-4x"></i>
+                <div class="position-absolute bottom-0 start-0 p-2 text-white small">
+                    <i class="fas fa-microphone"></i> Alex Chen (Plaintiff)
+                </div>
+            </div>
+
+            <!-- Participants Thumbnails -->
+            <div class="row g-2 mb-3">
+                <div class="col-6">
+                    <div class="bg-secondary rounded p-2 text-white small text-center">Maya (Defense)</div>
+                </div>
+                <div class="col-6">
+                    <div class="bg-secondary rounded p-2 text-white small text-center">Judge Smith</div>
+                </div>
+            </div>
+
+            <!-- Argument Queue -->
+            <h6 class="fw-bold mt-4">Argument Queue</h6>
+            <div class="list-group list-group-flush mb-3">
+                <div class="list-group-item px-0 d-flex justify-content-between">
+                    <div>
+                        <span class="fw-bold d-block">Alex Chen</span>
+                        <small class="text-muted">Opening Statement</small>
+                    </div>
+                    <span class="badge bg-success align-self-center">Speaking</span>
+                </div>
+                <div class="list-group-item px-0 d-flex justify-content-between">
+                    <div>
+                        <span class="fw-bold d-block">Maya Singh</span>
+                        <small class="text-muted">Opening Statement - Defense</small>
+                    </div>
+                    <span class="badge bg-light text-dark align-self-center">Up Next</span>
+                </div>
+            </div>
+
+            <!-- Documents -->
+             <h6 class="fw-bold">Shared Documents</h6>
+             <div class="card-custom p-2 mb-2 d-flex justify-content-between align-items-center">
+                 <div class="d-flex align-items-center">
+                     <i class="fas fa-file-pdf text-danger me-2"></i>
+                     <small>Plaintiff's Brief_V1.pdf</small>
+                 </div>
+                 <i class="fas fa-download text-muted"></i>
+             </div>
+
+             <button class="btn btn-primary-custom w-100 mt-3">Submit Evaluation</button>
+        </div>
+    </div>
+    <script src="main.js"></script>
+</body>
+</html>

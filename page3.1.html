@@ -1,0 +1,118 @@
+<!-- sing up page -->
+
+</head>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Legarium - Login</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .text>a {
+            color: red;
+            text-decoration: none;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="app-container p-4">
+        <div class="header-nav mb-3">
+            <button class="back-btn" onclick="history.back()"><i class="fas fa-arrow-left"></i></button>
+        </div>
+
+        <div class="logo-box">
+            <i class="fas fa-scale-balanced"></i>
+        </div>
+
+
+        <h2 class="fw-bold mb-1">Welcome!</h2>
+        <p class="text-muted mb-4 text">Enter your details to <a href=""> sign Up..</a></p>
+
+        <form>
+            <div class="mb-3">
+                <label class="form-label small text-muted">Email or Phone</label>
+                <div class="input-group">
+                    <span class="input-group-text bg-white border-end-0"><i class="fas fa-user text-muted"></i></span>
+                    <input type="text" id="emailInput" class="form-control border-start-0 ps-0"
+                        placeholder="Enter email/Phone no">
+                </div>
+            </div>
+
+            <!-- <a href="page4.1.html" class="btn btn-primary-custom w-100 mb-4">Login or Sign up</a> -->
+            <button type="button" onclick="handleLogin()" class="btn btn-primary-custom w-100 mb-4">Sign up</button>
+
+
+        </form>
+
+        <div class="text-center mb-3">
+            <span class="text-muted small">Or <a href="page3.html">Sign In </a>via</span>
+        </div>
+        <div class="social-buttons">
+            <button class="social-btn"><i class="fab fa-google" style="color: #DB4437;"></i></button>
+            <button class="social-btn"><i class="fab fa-apple" style="color: black;"></i></button>
+            <button class="social-btn"><i class="fab fa-facebook-f" style="color: #4267B2;"></i></button>
+        </div>
+
+
+    </div>
+    <!-- <script src="main.js"></script> -->
+    <!-- sending otp animation -->
+    <!-- nevigate to otp section     -->
+    <script>
+        let value1 = 0;
+        function handleLogin() {
+            const input = document.getElementById('emailInput').value;
+
+
+            // 2. Define Regex Patterns
+            // Email: standard format checks
+
+
+            // 1. Define Regex Patterns
+            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            const phonePattern = /^(\+\d{1,3}[- ]?)?\d{10}$/; // 10 digits, optional country code
+
+            // 2. Clean input for phone checking (remove spaces/dashes)
+            const cleanInput = input.replace(/[- ]/g, "");
+
+            if (input === "") {
+                alert("Please enter an email or phone number.");
+                return;
+            }
+            // 3. ONE Condition: Check if it is (Valid Email) OR (Valid Phone)
+            else if (emailPattern.test(input) || phonePattern.test(cleanInput)) {
+                //kuch nhi karna hai
+            } else {
+                alert("❌ Invalid. Please enter a valid Email or 10-digit Phone.");
+                return;
+            }
+
+            //email list
+            let email_id=["dhirajvishwakarma51@gmail.com",
+                "dhirajvishwakarma051@gmail.com",
+            ];
+
+            //condion to check the email present or not
+            
+            
+            
+            //store the value on web browser
+            value1 = 2;
+            localStorage.setItem("loginvalue", value1);
+            
+            // Navigate to OTP Page
+            window.location.href = "page4.html";
+            
+            // }
+        }
+            </script>
+            <script src="main.js"></script>
+            <!-- <script src="email_id.js"></script> -->
+</body>
+
+</html>
